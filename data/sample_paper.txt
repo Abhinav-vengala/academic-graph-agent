@@ -1,0 +1,13 @@
+3D Gaussian Splatting for Real-Time Radiance Field Rendering
+
+Bernhard Kerbl, Georgios Kopanas, Thomas Leimkuehler, George Drettakis
+
+Abstract
+Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos. However, achieving high visual quality still requires neural networks that are expensive to train and render, while recent faster methods trade off speed for quality. For unbounded and complete scenes (rather than isolated objects) and 1080p resolution rendering, no current method can achieve real-time display rates. We introduce three key elements that allow us to achieve state-of-the-art visual quality while maintaining competitive training times and importantly allow high-quality real-time (>= 30 fps) novel-view synthesis at 1080p resolution. First, starting from sparse points produced during camera calibration, we represent the scene with 3D Gaussians that preserve continuous volumetric radiance fields properties for scene optimization while avoiding unnecessary computation in empty space; Second, we perform interleaved optimization/density control of the 3D Gaussians, notably optimizing anisotropic covariance to achieve an accurate representation of the scene; Third, we develop a fast visibility-aware rendering algorithm that supports anisotropic splatting and both accelerates training and allows real-time rendering. We demonstrate state-of-the-art visual quality and real-time rendering on several established datasets.
+
+1. Introduction
+Mesh-based representations are the standard for real-time rendering, but they lack the ability to represent continuous volumetric effects. NeRF (Neural Radiance Fields) introduced a method to represent scenes as continuous volumetric fields parameterized by MLPs, achieving photorealistic results. However, NeRFs are slow to train and render.
+
+Our method, 3D Gaussian Splatting, improves on NeRF by using explicit 3D Gaussians instead of a neural network. This allows for faster training and real-time rendering. We also introduce a tile-based rasterizer that sorts Gaussians efficiently.
+
+We evaluate our method on the Mip-NeRF 360 dataset and the Tanks and Temples dataset. We compare against Mip-NeRF 360, InstantNGP, and Plenoxels. Our method achieves higher PSNR and SSIM scores while running at 30+ FPS.
